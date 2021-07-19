@@ -10,14 +10,21 @@ namespace DealerLead
 {
     public class SupportedMakes
     {
-       
-        [Column("MakeName")]
-        public string Name { get; set; } 
 
         [Key]
         [Column("MakeId")]
         public int Id { get; set; }
 
+        [Column("MakeName")]
+        [Display(Name = "Name")]
+        public string Name { get; set; } 
+
+        [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime? CreateDate { get; set; }
+
+        [ScaffoldColumn(false)]
+        public DateTime? ModifyDate { get; set; }
 
     }
 

@@ -13,7 +13,7 @@ namespace DealerLead
         [Key]
         [Column("StateAbbreviation")]
         public string Abbreviation { get; set; }
-
+   
         [Column("StateName")]
         public string Name { get; set; }
 

@@ -96,6 +96,7 @@ namespace DealerLead.Web.Controllers
             {
                 try
                 {
+                    supportedMakes.ModifyDate = DateTime.Now;
                     _context.Update(supportedMakes);
                     await _context.SaveChangesAsync();
                 }
