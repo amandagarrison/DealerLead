@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DealerLead.Web", "DealerLead.Web\DealerLead.Web.csproj", "{4B13B784-14A3-4735-B97C-D4937122A585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DealerLead", "DealerLead\DealerLead.csproj", "{BC4DFFA0-CF08-400C-A67B-8B77A0131562}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B13B784-14A3-4735-B97C-D4937122A585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B13B784-14A3-4735-B97C-D4937122A585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B13B784-14A3-4735-B97C-D4937122A585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B13B784-14A3-4735-B97C-D4937122A585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4DFFA0-CF08-400C-A67B-8B77A0131562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4DFFA0-CF08-400C-A67B-8B77A0131562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4DFFA0-CF08-400C-A67B-8B77A0131562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4DFFA0-CF08-400C-A67B-8B77A0131562}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D2EF8CD-40AA-49F3-B888-90197999375B}
+	EndGlobalSection
+EndGlobal
