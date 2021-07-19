@@ -13,6 +13,7 @@ namespace DealerLead
 
         public DbSet<SupportedState> SupportedState { get; set; }
         public  DbSet<SupportedMakes> SupportedMake { get; set; }
+        public DbSet<SupportedModels> SupportedModel { get; set; }
 
     }
 }
