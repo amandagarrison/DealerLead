@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using DealerLead.Web.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -26,17 +27,27 @@ namespace DealerLead.Web.Controllers
             return View();
         }
 
-        private string GetOid()
+        private Guid? GetOid()
         {
-            var user = this.User;
+            var identity = (ClaimsIdentity)User.Identity;
+            if (identity == null)
+            {
+                return null;
+            }
+            else
+            {
+                string oid = identity.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
 
-            return string.Empty;
+                return Guid.Parse(oid);
+            }
+            
         }
 
         [Authorize]
         public IActionResult Privacy()
         {
-            string oid = GetOid();
+            
+
             return View();
         }
 
