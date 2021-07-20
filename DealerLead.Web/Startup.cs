@@ -29,8 +29,17 @@ namespace DealerLead.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
+            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApp(options =>
+            {
+                Configuration.Bind("AzureAD", options);
+                options.Events ??= new OpenIdConnectEvents();
+                var existingHandlers = options.Events.OnTokenValidated;
+                options.Events.OnTokenValidated = OnTokenValidatedFunc;
+                options.Events.OnTokenValidated += existingHandlers;
+            });
+
+           
+            //    .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
             services.AddControllersWithViews(options =>
             {
@@ -43,7 +52,14 @@ namespace DealerLead.Web
                  .AddMicrosoftIdentityUI();
 
             services.AddDbContext<DealerLeadDBContext>();
+
         }
+        private async Task OnTokenValidatedFunc(TokenValidatedContext context)
+        {
+            //custom code here
+            await Task.CompletedTask.ConfigureAwait(false);
+        }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

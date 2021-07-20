@@ -24,6 +24,7 @@ namespace DealerLead.Web.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.oid = GetOid();
             return View();
         }
 

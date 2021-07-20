@@ -8,7 +8,7 @@
     <p>DealerLead is the <i>#1 lead tracking app</i> for car dealerships!</p>
 
     @* determine if user is registerd *@
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated )
     { 
         <p>Manage your dealership</p>
       
@@ -29,6 +29,6 @@
         <button type="submit">Register Account</button>
     }
 
-
+    @ViewBag.oid
 
 </div>
