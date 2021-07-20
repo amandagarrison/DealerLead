@@ -13,6 +13,7 @@ namespace DealerLead
 
         [Key]
         [Column("MakeId")]
+        [Display(Name = "Make ID")]
         public int Id { get; set; }
 
         [Column("MakeName")]
