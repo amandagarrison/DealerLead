@@ -15,7 +15,7 @@ namespace DealerLead
         public int UserId { get; set; }
 
         [Column("AzureADId")]
-        public string AzureId { get; set; }
+        public Guid AzureId { get; set; }
 
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]

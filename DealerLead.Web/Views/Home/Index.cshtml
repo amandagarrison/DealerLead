@@ -12,7 +12,7 @@
     {
         <h3>Please Sign in.</h3>
     }
-    else if (ViewBag.DealerLeadUser == nul)
+    else if (ViewBag.DealerLeadUser == null)
     {
         <h3>You need to register your account.</h3>
         <form method="post" action="/Home/RegisterUser">
@@ -39,3 +39,4 @@
     @ViewBag.oid
 
 </div>
+

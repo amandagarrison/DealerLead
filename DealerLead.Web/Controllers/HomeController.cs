@@ -8,6 +8,8 @@ using DealerLead.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace DealerLead.Web.Controllers
 {
@@ -16,13 +18,18 @@ namespace DealerLead.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DealerLeadDBContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, DealerLeadDBContext context)
         {
             _logger = logger;
             _context = context;
         }
 
+
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var user = this.User;
@@ -30,11 +37,9 @@ namespace DealerLead.Web.Controllers
             ViewBag.isAuthenticatedUser = user.Identity.IsAuthenticated;
             if (user.Identity.IsAuthenticated)
             {
-                var oid = GetOid();
-                ViewBag.oid = oid();
-                ViewBag.DealerLeadUser = await _context.DealerLeadUser.FirstOrDefaultAsync(x => x.AzureADId.Equals(oid));
-
+                ViewBag.oid = GetOid();
             }
+
             return View();
         }
 
@@ -42,9 +47,11 @@ namespace DealerLead.Web.Controllers
         public async Task<IActionResult> RegisterUser(string oid)
         {
             var newUser = new DealerLeadUser();
-            newUser.AzureADID = Guid.Parse(old);
+            newUser.AzureId = Guid.Parse(oid);
             await _context.AddAsync<DealerLeadUser>(newUser);
             await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
         private Guid? GetOid()

@@ -18,6 +18,29 @@ namespace DealerLead
         public string Name { get; set; }
 
         [Column("StreetAddress1")]
+        public string Address1 { get; set; }
+
+        [Column("StreetAddress2")]
+        public string Address2 { get; set; }
+
+        [Column("City")]
+        public string City { get; set; }
+
+        [Column("State")]
+        public string State { get; set; }
+
+        [Column("ZipCode")]
+        public string Zip { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime? CreateDate { get; set; }
+
+        [ScaffoldColumn(false)]
+        public DateTime? ModifyDate { get; set; }
+
+        [Column("CreatingUserId")]
+        public int UserId { get; set; }
 
 
 
