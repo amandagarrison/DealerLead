@@ -8,26 +8,33 @@
     <p>DealerLead is the <i>#1 lead tracking app</i> for car dealerships!</p>
 
     @* determine if user is registerd *@
-    @if (User.Identity.IsAuthenticated )
-    { 
-        <p>Manage your dealership</p>
-      
-            <div>
-                <a asp-area="" asp-controller="SupportedStates" asp-action="Index">States</a>
-            </div>
-            <div>
-                <a asp-area="" asp-controller="SupportedMakes" asp-action="Index">Makes</a>
-            </div>
-            <div>
-                <a asp-area="" asp-controller="SupportedModels" asp-action="Index">Models</a>
-            </div>
-        
-    }
-    else
+    @if (ViewBag.IsAuthenticatedUser == false)
     {
-        <p>You don't have an account. Please Register</p>
-        <button type="submit">Register Account</button>
+        <h3>Please Sign in.</h3>
     }
+    else if (ViewBag.DealerLeadUser == nul)
+    {
+        <h3>You need to register your account.</h3>
+        <form method="post" action="/Home/RegisterUser">
+            <input name="oid" value="@ViewBag.oid" style="display:none;" />
+            <button>Register</button>
+        </form>
+    }
+    else 
+    {
+    <h3>Welcome! Manage your dealership here.</h3>
+
+    <div>
+        <a asp-area="" asp-controller="SupportedStates" asp-action="Index">States</a>
+    </div>
+    <div>
+        <a asp-area="" asp-controller="SupportedMakes" asp-action="Index">Makes</a>
+    </div>
+    <div>
+        <a asp-area="" asp-controller="SupportedModels" asp-action="Index">Models</a>
+    </div>
+    }
+
 
     @ViewBag.oid
 

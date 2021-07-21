@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DealerLead.Web.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
 
     public class HomeController : Controller
     {
@@ -20,12 +20,31 @@ namespace DealerLead.Web.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            ViewBag.oid = GetOid();
+            var user = this.User;
+
+            ViewBag.isAuthenticatedUser = user.Identity.IsAuthenticated;
+            if (user.Identity.IsAuthenticated)
+            {
+                var oid = GetOid();
+                ViewBag.oid = oid();
+                ViewBag.DealerLeadUser = await _context.DealerLeadUser.FirstOrDefaultAsync(x => x.AzureADId.Equals(oid));
+
+            }
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterUser(string oid)
+        {
+            var newUser = new DealerLeadUser();
+            newUser.AzureADID = Guid.Parse(old);
+            await _context.AddAsync<DealerLeadUser>(newUser);
+            await _context.SaveChangesAsync();
         }
 
         private Guid? GetOid()
@@ -47,8 +66,6 @@ namespace DealerLead.Web.Controllers
         [Authorize]
         public IActionResult Privacy()
         {
-            
-
             return View();
         }
 
