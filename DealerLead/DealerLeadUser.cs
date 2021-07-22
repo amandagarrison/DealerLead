@@ -20,5 +20,6 @@ namespace DealerLead
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateDate { get; set; }
+
     }
 }

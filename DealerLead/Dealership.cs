@@ -12,15 +12,18 @@ namespace DealerLead
     {
         [Key]
         [Column("DealershipId)")]
-        public int Id { get; set; }
+        [Display(Name = "Dealership ID")]
+        public int DealershipId { get; set; }
 
         [Column("DealershipName")]
         public string Name { get; set; }
 
         [Column("StreetAddress1")]
+        [Display(Name = "Address 1")]
         public string Address1 { get; set; }
 
         [Column("StreetAddress2")]
+        [Display(Name = "Address 2")]
         public string Address2 { get; set; }
 
         [Column("City")]
@@ -40,6 +43,7 @@ namespace DealerLead
         public DateTime? ModifyDate { get; set; }
 
         [Column("CreatingUserId")]
+        [Display(Name = "User ID")]
         public int UserId { get; set; }
 
 

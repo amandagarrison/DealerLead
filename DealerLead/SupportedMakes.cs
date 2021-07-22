@@ -15,7 +15,7 @@ namespace DealerLead
         [Column("MakeId")]
         [Display(Name = "Make ID")]
         public int Id { get; set; }
-
+        
         [Column("MakeName")]
         [Display(Name = "Name")]
         public string Name { get; set; } 

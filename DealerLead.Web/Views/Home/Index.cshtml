@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<div>
     <h1 class="display-4">Welcome to DealerLead</h1>
 
     <p>DealerLead is the <i>#1 lead tracking app</i> for car dealerships!</p>
@@ -10,7 +10,10 @@
     @* determine if user is registerd *@
     @if (ViewBag.IsAuthenticatedUser == false)
     {
-        <h3>Please Sign in.</h3>
+<h3>
+    <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Please sign in</a>
+
+</h3>
     }
     else if (ViewBag.DealerLeadUser == null)
     {
@@ -24,15 +27,27 @@
     {
     <h3>Welcome! Manage your dealership here.</h3>
 
-    <div>
-        <a asp-area="" asp-controller="SupportedStates" asp-action="Index">States</a>
-    </div>
-    <div>
-        <a asp-area="" asp-controller="SupportedMakes" asp-action="Index">Makes</a>
-    </div>
-    <div>
-        <a asp-area="" asp-controller="SupportedModels" asp-action="Index">Models</a>
-    </div>
+    <ul>
+        <li>
+            <a asp-area="" asp-controller="SupportedStates" asp-action="Index">Manage your States</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="SupportedMakes" asp-action="Index">Manage your Makes</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="SupportedModels" asp-action="Index">Manage your Models</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Dealership" asp-action="Index">Manage your Dealerships</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Vehicles" asp-action="Index">Manage your Vehicles</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Dealership" asp-action="Index">Manage your Dealerships</a>
+        </li>
+    </ul>
+   
     }
 
 
